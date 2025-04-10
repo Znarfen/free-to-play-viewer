@@ -1,0 +1,85 @@
+
+.content {
+    margin-left: 240px;
+}
+
+.sidebar {
+    width: 210px;
+    position: fixed;
+    padding: 10px;
+    background-color: rgb(23, 23, 23);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.sidebar .genre {
+    text-align: right;
+}
+
+.thumnail {
+    position: relative;
+    background-color: rgb(23, 23, 23);
+    display: inline-block;
+    margin: 10px;
+    margin-top: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 365px;
+    height: 280px;
+    text-align: center;
+}
+
+.thumnail img {
+    width: 365px;
+}
+
+.thumnail h3 {
+    position: absolute;
+    left: 10px;
+    bottom: 45px;
+    margin: 3px;
+    text-align: left;
+}
+
+.description {
+    padding: 10px;
+    position: absolute;
+    margin: 0;
+    top: -50%;
+    left: 0;
+    transition: 0.2s ease-in-out;
+    font-weight: bold;
+    font-size: medium;
+    width: calc(100% - 20px);
+    height: 186px;
+}
+
+.genre {
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px black;
+}
+
+.thumnail .genre {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.platform {
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+}
+
+.thumnail:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 3px rgb(86, 77, 131);
+}
+
+.thumnail:hover .description {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 0px 3px 3px rgb(255, 255, 255);
+}

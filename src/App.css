@@ -1,0 +1,20 @@
+body {
+  background-color: rgb(42, 30, 49);
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+hr {
+  width: 100%;
+}
+
+a {
+  margin-left: 10px;
+  margin-right: 10px;
+}
