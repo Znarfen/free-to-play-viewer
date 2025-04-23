@@ -1,5 +1,16 @@
+:root {
+  --bg: rgb(42, 30, 49);
+  --primary: rgb(23, 23, 23);
+  --secondary: rgb(215, 215, 215);
+  --active: rgb(255, 255, 255);
+}
+
+div, label, p, h1, h2, h3, h4, h5 {
+  color: var(--secondary);
+}
+
 body {
-  background-color: rgb(42, 30, 49);
+  background-color: var(--bg);
   margin: 0;
   padding: 0;
 }
