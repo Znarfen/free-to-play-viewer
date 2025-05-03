@@ -1,5 +1,6 @@
 import './Content.css'
 import { useEffect, useState } from 'react';
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 function Content() {
     const [games, setGames] = useState([]);
@@ -18,7 +19,7 @@ function Content() {
         'Social': false,
     });
 
-    const selectedGenres = () => {
+    function selectedGenres() {
         let activeGenre = [];
 
         Object.keys(genres).forEach(curentGenre => {
@@ -28,6 +29,7 @@ function Content() {
         return activeGenre;
     }
 
+    // add games from api (useState, setGames)
     function getGames() {
         let gameList = [];
         fetch("/api/games?")
@@ -45,26 +47,22 @@ function Content() {
             })
             .catch(error => console.error(error));
     }
-    
+        
     function handleChange(key) {
         setGenre((prev) => ({ ...prev, [key]: !prev[key] }));
     }
-    
-    useEffect(() => {
-        getGames();
-    }, [genres])
 
     // generate a "randome" value from int that is > max.
     function lessThan(int, max) {
         if (int <= max + 1) {
             return int;
-        }
-        if (int % 2) return lessThan(int/2, max);
-        if (int % 3) return lessThan(int/3, max);
-        if (int % 5) return lessThan(int/5, max);
-        if (int % 7) return lessThan(int/7, max);
-        if (int % 11) return lessThan(int/11, max);
-        else return lessThan(Math.round(int)/2, max)
+    }
+    if (int % 2) return lessThan(int/2, max);
+    if (int % 3) return lessThan(int/3, max);
+    if (int % 5) return lessThan(int/5, max);
+    if (int % 7) return lessThan(int/7, max);
+    if (int % 11) return lessThan(int/11, max);
+    else return lessThan(Math.round(int)/2, max)
     }
 
     // generate a "randome" rgb value from str
@@ -85,6 +83,11 @@ function Content() {
         return("rgb(" + r + "," + g + "," + b + ")")
     }
 
+    useEffect(() => {
+        getGames();
+    }, [genres])
+
+    if (useLocation().pathname != '/') return <Outlet />
     return(
         <>
             <div className='sidebar'>
@@ -109,14 +112,15 @@ function Content() {
 
             <div className="content">
                 {games.map((game, i) => (
-                    
-                    <div key={i} className='thumnail'>
-                        <img src={game['thumbnail']}></img>
-                        <h3>{game['title']}</h3>
-                        <p className='description'>{game['short_description']}</p>
-                        <p className='genre' style={{backgroundColor: strToRGB(game['genre'])}}>{game['genre']}</p>
-                        <p className='platform'>{game['platform']}</p>
-                    </div>
+                    <Link to={"view#" + game['id']}>
+                        <div key={i} className='thumnail'>
+                            <img src={game['thumbnail']}></img>
+                            <h3>{game['title']}</h3>
+                            <p className='description'>{game['short_description']}</p>
+                            <p className='genre' style={{backgroundColor: strToRGB(game['genre'])}}>{game['genre']}</p>
+                            <p className='platform'>{game['platform']}</p>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </>
