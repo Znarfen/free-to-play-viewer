@@ -9,6 +9,7 @@
 .screenshots img {
     height: 100%;
     object-fit: cover;
+    max-width: 100%;
 }
 
 .screenshots div {
@@ -60,11 +61,79 @@
 }
 
 .view-description {
-    display: inline-block;
-    position: relative;
-    background-color: var(--primary);
+    font-size: 14px;
     padding: 15px;
     border-radius: 15px;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.view-keys {
+    display: inline-block;
+    position: relative;
+    padding-right: 50px;
+    width: calc(45% - 50px);
+    text-align: right;
+}
+
+.view-values {
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    padding-left: 50px;
+    width: calc(45% - 50px);
+}
+
+.drop-down {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.drop-down-bar {
+    font-size: 25px;
+    width: calc(100% - 20px);
+    display: flex;
+    cursor: pointer;
+}
+
+.drop-down-bar h3 {
+    width: 50%;
+    margin: 0;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 100;
+}
+
+.drop-down-activ {
+    text-align: right !important;
+    font-weight: bold;
+}
+
+.drop-down-btn {
+    display: none;
+}
+
+.drop-down-media {
+    max-height: 0;
+    font-size: 16px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100% - 20px);
+    overflow: hidden;
+    transition-property: all;
+    transition: 0.5s ease-in-out;
+}
+  
+.drop-down-btn:checked~.drop-down-media {
+    max-height: 100vh;
+}
+
+.drop-down-bar .drop-down-activ::after {
+    content: '\002B';
+}
+
+.drop-down-btn:checked+label .drop-down-activ::after {
+    content: '\2212';
 }

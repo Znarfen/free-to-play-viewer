@@ -88,3 +88,17 @@ label:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: inherit;
 }
+
+@media screen and (max-width: 768px) {
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: calc(100% - 60px);
+        padding: 30px;
+        margin-bottom: 50px;
+        position: relative;
+        border-radius: 0;
+    }
+}

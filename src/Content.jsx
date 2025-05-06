@@ -19,6 +19,11 @@ function Content() {
         'Social': false,
     });
 
+    const [seeFavorites, setSeeFavorites] = useState(false);
+
+    const favorites = localStorage.getItem("favorites").split(",");
+
+    // see all genres that are selected as array
     function selectedGenres() {
         let activeGenre = [];
 
@@ -32,14 +37,28 @@ function Content() {
     // add games from api (useState, setGames)
     function getGames() {
         let gameList = [];
+        let fav = true;
         fetch("/api/games?")
             .then(response => response.json())
             .then(data => {
                 data.forEach(game => {
-                    if (selectedGenres() != 0) {
+                    if (selectedGenres() != 0 || seeFavorites) {
+
+                        if (seeFavorites) {
+                            fav = false;
+                            favorites.forEach(favorit => {
+                                if (favorit == game['id']) fav = true
+                            });
+                        }
+                        else fav = true;
+
                         selectedGenres().forEach(genre => {
-                            if (genre == game['genre']) gameList.push(game);
+                            if (genre == game['genre'] && fav) gameList.push(game);
                         })
+
+                        if (selectedGenres() == 0 && fav) {
+                            gameList.push(game)
+                        }
                     }
                     else gameList.push(game)
                 });
@@ -56,13 +75,14 @@ function Content() {
     function lessThan(int, max) {
         if (int <= max + 1) {
             return int;
-    }
-    if (int % 2) return lessThan(int/2, max);
-    if (int % 3) return lessThan(int/3, max);
-    if (int % 5) return lessThan(int/5, max);
-    if (int % 7) return lessThan(int/7, max);
-    if (int % 11) return lessThan(int/11, max);
-    else return lessThan(Math.round(int)/2, max)
+        }
+
+        if (int % 2) return lessThan(int/2, max);
+        if (int % 3) return lessThan(int/3, max);
+        if (int % 5) return lessThan(int/5, max);
+        if (int % 7) return lessThan(int/7, max);
+        if (int % 11) return lessThan(int/11, max);
+        else return lessThan(Math.round(int)/2, max)
     }
 
     // generate a "randome" rgb value from str
@@ -85,17 +105,28 @@ function Content() {
 
     useEffect(() => {
         getGames();
-    }, [genres])
+    }, [genres, seeFavorites]);
 
     if (useLocation().pathname != '/') return <Outlet />
     return(
         <>
             <div className='sidebar'>
-                <h3>Game Genres</h3>
+                <h3>Filter Setings</h3>
                 <form>
+                    <hr />
+                    <p className='genre'>
+                        <label key="seeFavorites">
+                            See favorites
+                            <input
+                                checked={seeFavorites}
+                                onChange={() => setSeeFavorites(!seeFavorites)}
+                                type="checkbox"
+                            />
+                        </label>
+                    </p>
+                    <hr />
                     {Object.entries(genres).map(([key, value]) => (
-                        <>
-                            <p className='genre'>
+                            <p key={value} className='genre'>
                                 <label key={key}>
                                     {key}
                                     <input
@@ -105,14 +136,14 @@ function Content() {
                                     />
                                 </label>
                             </p>
-                        </>
                     ))}
+                    <hr />
                 </form>
             </div>
 
             <div className="content">
                 {games.map((game, i) => (
-                    <Link to={"view#" + game['id']}>
+                    <Link key={i} to={"view#" + game['id']}>
                         <div key={i} className='thumnail'>
                             <img src={game['thumbnail']}></img>
                             <h3>{game['title']}</h3>

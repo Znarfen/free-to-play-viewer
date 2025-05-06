@@ -1,16 +1,12 @@
-import './App.css'
-import { Outlet, Link } from "react-router-dom";
+import './Navbar.css'
 
 function Navbar() {
     return (
         <>
             <nav>
-                <Link to="/games">Games</Link>
-                <Link to="/saved">Saved</Link>
-                <hr></hr>
+                <a href="/"><h1>Free To Play Viewer</h1></a>
+                <hr />
             </nav>
-            
-            <Outlet />
         </>
   )
 }

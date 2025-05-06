@@ -89,12 +89,48 @@ function View() {
             </div>
 
             <div className='user-select'>
-                <a href={game["game_url"]} className='user-select-button'>Play: {game["title"]}</a>
+                <a href={game["game_url"]} target="_blank" className='user-select-button'>Play: {game["title"]}</a>
                 <p></p>
                 <button className='user-select-button' onClick={() => {saveOrRemoveFavorites()}} style={{color: favoritColor}}>{favoritText}</button>
             </div>
 
             <p className='view-description'>{game["description"]}</p>
+
+            <div class="drop-down">
+                <hr />
+                <input class="drop-down-btn" id="1" type="checkbox" name="menu" />
+                <label class="drop-down-bar" for="1">
+                    <h3>About {game["title"]}</h3>
+                    <h3 class="drop-down-activ"></h3>
+                </label>
+                
+                <div class="drop-down-media">
+                    <p className='view-keys'>Developer: </p>        <p className='view-values'>{game["developer"]}</p> <br />
+                    <p className='view-keys'>Publisher: </p>        <p className='view-values'>{game["publisher"]}</p> <br />
+                    <p className='view-keys'>Release Date: </p>    <p className='view-values'>{game["release_date"]}</p> <br />
+                    <p className='view-keys'>Genre: </p>            <p className='view-values'>{game["genre"]}</p> <br />
+                </div>
+                <hr />
+            </div>
+
+            {game["minimum_system_requirements"] && (
+                <div class="drop-down">
+                    <input class="drop-down-btn" id="2" type="checkbox" name="menu" />
+                    <label class="drop-down-bar" for="2">
+                        <h3>Minimum Requirements</h3>
+                        <h3 class="drop-down-activ"></h3>
+                    </label>
+                    
+                    <div class="drop-down-media">
+                        <p className='view-keys'>OS:</p>        <p className='view-values'>{game["minimum_system_requirements"]["os"]}</p> <br />
+                        <p className='view-keys'>Processor:</p> <p className='view-values'>{game["minimum_system_requirements"]["processor"]}</p> <br />
+                        <p className='view-keys'>Memory:</p>    <p className='view-values'>{game["minimum_system_requirements"]["memory"]}</p> <br />
+                        <p className='view-keys'>Graphics:</p>  <p className='view-values'>{game["minimum_system_requirements"]["graphics"]}</p> <br />
+                        <p className='view-keys'>Storage:</p>   <p className='view-values'>{game["minimum_system_requirements"]["storage"]}</p> <br />
+                    </div>
+                    <hr />
+                </div>
+            )}
         </>
     )
 }
