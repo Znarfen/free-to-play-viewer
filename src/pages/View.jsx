@@ -107,7 +107,7 @@ function View() {
                 <div class="drop-down-media">
                     <p className='view-keys'>Developer: </p>        <p className='view-values'>{game["developer"]}</p> <br />
                     <p className='view-keys'>Publisher: </p>        <p className='view-values'>{game["publisher"]}</p> <br />
-                    <p className='view-keys'>Release Date: </p>    <p className='view-values'>{game["release_date"]}</p> <br />
+                    <p className='view-keys'>Release Date: </p>     <p className='view-values'>{game["release_date"]}</p> <br />
                     <p className='view-keys'>Genre: </p>            <p className='view-values'>{game["genre"]}</p> <br />
                 </div>
                 <hr />

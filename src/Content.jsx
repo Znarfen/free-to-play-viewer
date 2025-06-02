@@ -112,6 +112,7 @@ function Content() {
         <>
             <div className='sidebar'>
                 <h3>Filter Setings</h3>
+
                 <form>
                     <hr />
                     <p className='genre'>
@@ -126,16 +127,16 @@ function Content() {
                     </p>
                     <hr />
                     {Object.entries(genres).map(([key, value]) => (
-                            <p key={value} className='genre'>
-                                <label key={key}>
-                                    {key}
-                                    <input
-                                        checked={genres[key]}
-                                        onChange={() => handleChange(key)}
-                                        type="checkbox"
-                                    />
-                                </label>
-                            </p>
+                        <p key={key} className='genre'>
+                            <label>
+                                {key}
+                                <input
+                                    checked={genres[key]}
+                                    onChange={() => handleChange(key)}
+                                    type="checkbox"
+                                />
+                            </label>
+                        </p>
                     ))}
                     <hr />
                 </form>
