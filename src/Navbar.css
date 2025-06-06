@@ -6,3 +6,12 @@ nav {
     padding: 20px;
     margin-bottom: 50px;
 }
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+hr {
+    margin: 0;
+}

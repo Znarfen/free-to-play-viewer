@@ -21,6 +21,8 @@ function Content() {
 
     const [seeFavorites, setSeeFavorites] = useState(false);
 
+    const [userSearch, setUserSearch] = useState(" ");
+
     const favorites = localStorage.getItem("favorites").split(",");
 
     // see all genres that are selected as array
@@ -53,14 +55,14 @@ function Content() {
                         else fav = true;
 
                         selectedGenres().forEach(genre => {
-                            if (genre == game['genre'] && fav) gameList.push(game);
+                            if (genre == game['genre'] && fav && isSearchMatch(game['title'])) gameList.push(game);
                         })
 
-                        if (selectedGenres() == 0 && fav) {
+                        if (selectedGenres() == 0 && fav && isSearchMatch(game['title'])) {
                             gameList.push(game)
                         }
                     }
-                    else gameList.push(game)
+                    else if (isSearchMatch(game['title'])) gameList.push(game)
                 });
                 setGames(gameList);
             })
@@ -69,6 +71,13 @@ function Content() {
         
     function handleChange(key) {
         setGenre((prev) => ({ ...prev, [key]: !prev[key] }));
+    }
+
+    function isSearchMatch(game = "") {
+        if (game.toLowerCase().includes(userSearch.toLowerCase()) || userSearch == "") {
+            return true;
+        }
+        return false;
     }
 
     // generate a "randome" value from int that is > max.
@@ -102,10 +111,10 @@ function Content() {
 
         return("rgb(" + r + "," + g + "," + b + ")")
     }
-
+    
     useEffect(() => {
         getGames();
-    }, [genres, seeFavorites]);
+    }, [genres, seeFavorites, userSearch]);
 
     if (useLocation().pathname != '/') return <Outlet />
     return(
@@ -141,6 +150,15 @@ function Content() {
                     <hr />
                 </form>
             </div>
+
+            <form className='search'>
+                <label>Search: </label>
+                <input
+                    type="text"
+                    placeholder="Search for a game..."
+                    onChange={(e) => setUserSearch(e.target.value)}
+                />
+            </form>
 
             <div className="content">
                 {games.map((game, i) => (

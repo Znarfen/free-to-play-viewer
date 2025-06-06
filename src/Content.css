@@ -4,6 +4,19 @@ label:hover {
 
 }
 
+.search {
+    margin: 40px;
+}
+
+.search input {
+    width: 300px;
+    margin-left: 10px;
+}
+
+.search input:focus {
+    outline: none;;
+}
+
 .content {
     margin-left: 240px;
     min-height: 100vh;
