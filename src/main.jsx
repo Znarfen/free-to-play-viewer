@@ -16,8 +16,9 @@ createRoot(document.getElementById('root')).render(
       <Navbar />
       <BrowserRouter>
         <Routes>
+
           <Route exact path='/' element={<Content />}>
-            <Route path='/view' element={<View />} />
+            <Route path='/:id' element={<View />} />
           </Route>
 
         </Routes>

@@ -162,7 +162,7 @@ function Content() {
 
             <div className="content">
                 {games.map((game, i) => (
-                    <Link key={i} to={"view#" + game['id']}>
+                    <Link key={i} to={"/" + game['id']}>
                         <div key={i} className='thumnail'>
                             <img src={game['thumbnail']}></img>
                             <h3>{game['title']}</h3>

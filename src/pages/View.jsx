@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 function View() {
 
-    const gameId = useLocation().hash.split("#")[1];
+    const gameId = useLocation().pathname.split("/")[1];
 
     const [game, setGame] = useState({});
     const [gameImg, setGameImg] = useState({});
@@ -96,15 +96,15 @@ function View() {
 
             <p className='view-description'>{game["description"]}</p>
 
-            <div class="drop-down">
+            <div className="drop-down">
                 <hr />
-                <input class="drop-down-btn" id="1" type="checkbox" name="menu" />
-                <label class="drop-down-bar" for="1">
+                <input className="drop-down-btn" id="1" type="checkbox" name="menu" />
+                <label className="drop-down-bar" htmlFor="1">
                     <h3>About {game["title"]}</h3>
-                    <h3 class="drop-down-activ"></h3>
+                    <h3 className="drop-down-activ"></h3>
                 </label>
                 
-                <div class="drop-down-media">
+                <div className="drop-down-media">
                     <p className='view-keys'>Developer: </p>        <p className='view-values'>{game["developer"]}</p> <br />
                     <p className='view-keys'>Publisher: </p>        <p className='view-values'>{game["publisher"]}</p> <br />
                     <p className='view-keys'>Release Date: </p>     <p className='view-values'>{game["release_date"]}</p> <br />
@@ -114,14 +114,14 @@ function View() {
             </div>
 
             {game["minimum_system_requirements"] && (
-                <div class="drop-down">
-                    <input class="drop-down-btn" id="2" type="checkbox" name="menu" />
-                    <label class="drop-down-bar" for="2">
+                <div className="drop-down">
+                    <input className="drop-down-btn" id="2" type="checkbox" name="menu" />
+                    <label className="drop-down-bar" htmlFor="2">
                         <h3>Minimum Requirements</h3>
-                        <h3 class="drop-down-activ"></h3>
+                        <h3 className="drop-down-activ"></h3>
                     </label>
                     
-                    <div class="drop-down-media">
+                    <div className="drop-down-media">
                         <p className='view-keys'>OS:</p>        <p className='view-values'>{game["minimum_system_requirements"]["os"]}</p> <br />
                         <p className='view-keys'>Processor:</p> <p className='view-values'>{game["minimum_system_requirements"]["processor"]}</p> <br />
                         <p className='view-keys'>Memory:</p>    <p className='view-values'>{game["minimum_system_requirements"]["memory"]}</p> <br />
