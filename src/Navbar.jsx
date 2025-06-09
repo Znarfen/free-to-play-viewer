@@ -10,7 +10,7 @@ function Navbar() {
         <nav>
             <div className='theme-togle'>
                 <div>
-                    <button id='main' className='theme-btn' onClick={() => setTheme('main')}></button>
+                    <button id='main' className='theme-btn' onClick={() => theme.setTheme('main')}></button>
                 </div>
 
                 <div>
