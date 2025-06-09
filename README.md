@@ -19,6 +19,7 @@ On the main page, you can filter games in the side menu (FPS, card, MMO, etc.). 
 - View detailed information for each game
 - Save your favorite games for quick access
 - Responsive and user-friendly interface
+- Switch themes on sites
 
 # Project Structure
 
@@ -31,6 +32,7 @@ On the main page, you can filter games in the side menu (FPS, card, MMO, etc.). 
     |   |   |── View.css
     |   |   └── View.jsx
     │   |── App.css
+    │   |── App.jsx
     │   |── Content.css
     │   |── Content.jsx
     │   |── Footer.css

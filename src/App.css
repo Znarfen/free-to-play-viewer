@@ -23,6 +23,7 @@ body {
 
 hr {
   width: 100%;
+  color: var(--active);
 }
 
 a {

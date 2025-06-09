@@ -1,8 +1,13 @@
+// add context   <---
+
 import './Content.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext, createContext } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 
 function Content() {
+
+    //const theme = useContext(themeContext);
+
     const [games, setGames] = useState([]);
 
     const [genres, setGenre] = useState({
@@ -64,6 +69,7 @@ function Content() {
                     }
                     else if (isSearchMatch(game['title'])) gameList.push(game)
                 });
+
                 setGames(gameList);
             })
             .catch(error => console.error(error));

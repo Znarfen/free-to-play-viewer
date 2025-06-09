@@ -5,3 +5,16 @@ footer {
     background-color: var(--bg);
     padding: 20px;
 }
+
+footer a {
+    background-color: var(--secondary);
+    color: var(--bg);
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+footer a:hover {
+    color: var(--bg);
+    background-color: var(--active);
+}

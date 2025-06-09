@@ -12,6 +12,63 @@ h1 {
     margin: 0;
 }
 
-hr {
+nav hr {
     margin: 0;
+    margin-top: 30px;
+}
+
+.theme-togle {
+    position: absolute;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+
+    top: 5px;
+    right: 50px;
+}
+
+.theme-togle div {
+    border: 3px solid var(--secondary);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-togle div:hover {
+    border: 3px solid var(--active);
+}
+
+.theme-btn {
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+#main {
+  border: 11px solid rgb(119, 89, 121);
+  border-top-color: rgb(42, 30, 49);
+  border-left-color: rgb(42, 30, 49);
+}
+
+#paper {
+  border: 11px solid rgb(112, 114, 40);
+  border-top-color: rgb(85, 83, 64);
+  border-left-color: rgb(85, 83, 64);
+}
+
+#water {
+  border: 11px solid rgb(0, 95, 113);
+  border-top-color: rgb(0, 152, 187);
+  border-left-color: rgb(0, 152, 187);
+}
+
+.theme-btn:hover {
+  border: 11px solid;
 }
